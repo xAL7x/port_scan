@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+from socket import *
+import time
+import datetime
+host = input("enter the host/ip ==> ")
+start_port = 1
+end_port = 90
+
+active_ports = []
+
+start_time = datetime.datetime.now()
+print("Starting hassanalhabi 1.0 at", start_time)
+print("hassanScan report for", host)
+print("Ports range from", start_port, "to", end_port)
+print("\n")
+for port in range(start_port, end_port):
+        s = socket(AF_INET, SOCK_STREAM)
+        result = s.connect_ex((host, port))
+        
+        if result == 0:
+                print("port", port ,"is open")
+                active_ports.append(port)
+        else:
+
+               print("port", port, "is close")
+        time.sleep(0)
+
+end_time = datetime.datetime.now()
+print("\n")
+print("The end time is", end_time, "- the open ports are", active_ports)
+print("hassan Scan completed successfully")
+
